@@ -29,3 +29,17 @@ resource "aws_autoscaling_group" "on_demand" {
   }
 
 }
+
+resource "aws_ecs_capacity_provider" "on_demand" {
+  name = format("%s-on-demand", var.projetct_name)
+
+  auto_scaling_group_provider {
+    auto_scaling_group_arn = aws_autoscaling_group.on_demand.arn
+    managed_scaling {
+      status                    = "ENABLED"
+      target_capacity           = 90
+      minimum_scaling_step_size = 1
+      maximum_scaling_step_size = 10
+    }
+  }
+}
