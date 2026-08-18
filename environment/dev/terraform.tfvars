@@ -31,7 +31,7 @@ load_balancer_type     = "application"
 
 nodes_ami = "ami-07c1e4afb88366d59"
 
-nodes_instance_type = "t3a.large"
+nodes_instance_type = "t2.micro"
 
 node_volume_size = "50"
 
